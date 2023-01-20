@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import data from "../data.json";
 import "bootstrap/dist/css/bootstrap.min.css";
+import swal from "sweetalert";
 
 const FilterForm = ({ onFilter }) => {
     const [name, setName] = useState("");
@@ -49,7 +50,7 @@ export const ListProducts = ({
 }) => {
     // eslint-disable-next-line no-unused-vars
     const [dataJson, setDataJson] = useState(data);
-    const [errorMessage, setErrorMessage] = useState("");
+    //const [errorMessage, setErrorMessage] = useState("");
 
     //crear estado para guardar productos filtrados
     const [filteredProducts, setFilteredProducts] = useState(data.products);
@@ -67,10 +68,16 @@ export const ListProducts = ({
 
     const addProduct = (product) => {
         if (product.stock === 0) {
-            setErrorMessage(
+            /*  setErrorMessage(
                 `Lo sentimos, el producto ${product.name} no está disponible en este momento.`
             );
-            setTimeout(() => setErrorMessage(""), 3000);
+            setTimeout(() => setErrorMessage(""), 3000); */
+            swal({
+                title: "Atención",
+                text: "Este producto no tiene stock en el momento",
+                icon: "warning",
+                button: "OK",
+            });
             return;
         }
         if (allProducts.find((item) => item.id === product.id)) {
@@ -81,13 +88,13 @@ export const ListProducts = ({
             setCount(count + product.cant);
             return setAllProducts([...products]);
         }
-        if (product.cant > product.stock) {
+        /* if (product.cant > product.stock) {
             setErrorMessage(
                 `Lo sentimos, el producto ${product.name} alcanzo las unidades en stock`
             );
             setTimeout(() => setErrorMessage(""), 3000);
             return;
-        }
+        } */
 
         setTotal(total + product.unit_price * product.cant); //multiplica valor de articulos repetidos
         setCount(count + product.cant); //Actualiza cantidad de articulos seleccionados
@@ -102,9 +109,9 @@ export const ListProducts = ({
                 Mostrar Todo
             </button>
             <div className="container-items row">
-                {errorMessage && (
+                {/*  {errorMessage && (
                     <div className="error-message d-block">{errorMessage}</div>
-                )}
+                )} */}
                 {filteredProducts.map((item, index) => (
                     <div
                         className="col-lg-4 col-md-6 col-12 item"
