@@ -221,3 +221,9 @@ header {
   width: 100%;
   font-size: 20px;
 }
+.error-message{
+  background-color: yellowgreen;
+  height: 80px;
+  padding: 5px;
+  border-radius: 5px;
+}

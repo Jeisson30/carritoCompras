@@ -51,7 +51,6 @@ export const HeaderPage = ({
                         <span id="contador-productos">{count}</span>
                     </div>
                 </div>
-
                 <div
                     className={`container-cart-products ${
                         state ? "" : "hidden-cart"
