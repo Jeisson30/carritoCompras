@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/carritoCompras/static/css/main.a8212136.css",
+    "main.js": "/carritoCompras/static/js/main.94629c45.js",
+    "static/js/787.3ab9c092.chunk.js": "/carritoCompras/static/js/787.3ab9c092.chunk.js",
+    "index.html": "/carritoCompras/index.html",
+    "main.a8212136.css.map": "/carritoCompras/static/css/main.a8212136.css.map",
+    "main.94629c45.js.map": "/carritoCompras/static/js/main.94629c45.js.map",
+    "787.3ab9c092.chunk.js.map": "/carritoCompras/static/js/787.3ab9c092.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a8212136.css",
+    "static/js/main.94629c45.js"
+  ]
+}
