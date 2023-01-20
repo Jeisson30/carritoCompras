@@ -1,6 +1,37 @@
 import React, { useState } from "react";
 import data from "../data.json";
 
+const FilterForm = ({ onFilter }) => {
+    const [name, setName] = useState("");
+    const [type, setType] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onFilter(name, type);
+    };
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Nombre:
+                <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+            </label>
+            <label>
+                Tipo:
+                <input
+                    type="text"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                />
+            </label>
+            <button type="submit">Filtrar</button>
+        </form>
+    );
+};
+
 export const ListProducts = ({
     allProducts,
     setAllProducts,
@@ -12,6 +43,20 @@ export const ListProducts = ({
     // eslint-disable-next-line no-unused-vars
     const [dataJson, setDataJson] = useState(data);
     const [errorMessage, setErrorMessage] = useState("");
+
+    //crear estado para guardar productos filtrados
+    const [filteredProducts, setFilteredProducts] = useState(data.products);
+
+    const filterProducts = (name, type) => {
+        setFilteredProducts(
+            dataJson.products.filter(
+                (product) => product.name === name && product.type === type
+            )
+        );
+    };
+    const resetFilter = () => {
+        setFilteredProducts(dataJson.products);
+    };
 
     const addProduct = (product) => {
         if (product.stock === 0) {
@@ -42,14 +87,16 @@ export const ListProducts = ({
         setAllProducts([...allProducts, product]);
         //console.log(`productos adicionados -- ${JSON.stringify(allProducts)}`);
     };
-
     return (
         <>
+            {/* agrega un componente de formulario para filtrar los productos */}
+            <FilterForm onFilter={filterProducts} />
+            <button onClick={resetFilter}>Mostrar Todo</button>
             <div className="container-items">
                 {errorMessage && (
                     <div className="error-message">{errorMessage}</div>
                 )}
-                {dataJson.products.map((item, index) => (
+                {filteredProducts.map((item, index) => (
                     <div className="item" key={item.id}>
                         <figure>
                             <img src={item.img} alt={item.name} />
