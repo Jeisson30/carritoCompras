@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import data from "../data.json";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const FilterForm = ({ onFilter }) => {
     const [name, setName] = useState("");
@@ -10,25 +11,31 @@ const FilterForm = ({ onFilter }) => {
         onFilter(name, type);
     };
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Nombre:
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </label>
-            <label>
-                Tipo:
-                <input
-                    type="text"
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
-                />
-            </label>
-            <button type="submit">Filtrar</button>
-        </form>
+        <div className="row">
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Nombre:
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="form-control"
+                    />
+                </label>
+                <label>
+                    Tipo:
+                    <input
+                        type="text"
+                        value={type}
+                        onChange={(e) => setType(e.target.value)}
+                        className="form-control"
+                    />
+                </label>
+                <button type="submit" className="btn btn-success">
+                    Filtrar
+                </button>
+            </form>
+        </div>
     );
 };
 
@@ -91,13 +98,18 @@ export const ListProducts = ({
         <>
             {/* agrega un componente de formulario para filtrar los productos */}
             <FilterForm onFilter={filterProducts} />
-            <button onClick={resetFilter}>Mostrar Todo</button>
-            <div className="container-items">
+            <button onClick={resetFilter} className="btn btn-success">
+                Mostrar Todo
+            </button>
+            <div className="container-items row">
                 {errorMessage && (
-                    <div className="error-message">{errorMessage}</div>
+                    <div className="error-message d-block">{errorMessage}</div>
                 )}
                 {filteredProducts.map((item, index) => (
-                    <div className="item" key={item.id}>
+                    <div
+                        className="col-lg-4 col-md-6 col-12 item"
+                        key={item.id}
+                    >
                         <figure>
                             <img src={item.img} alt={item.name} />
                         </figure>

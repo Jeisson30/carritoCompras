@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import swal from "sweetalert";
 
 export const HeaderPage = ({
     allProducts,
@@ -23,7 +24,31 @@ export const HeaderPage = ({
         setTotal(0);
         setCount(0);
     };
-
+    const createOrder = (allProducts) => {
+        return allProducts.map((product) => {
+            return {
+                id: product.id,
+                name: product.name,
+                quantity: product.cant,
+                price: product.unit_price,
+            };
+        });
+    };
+    const handleCreateOrder = () => {
+        const selectedProducts = createOrder(allProducts);
+        swal({
+            title: "Confirmado",
+            text: "Tu pedido fue enviado satosfactoriamente",
+            icon: "success",
+            button: "OK",
+        });
+        console.log(
+            ` productos seleccionados -- ${JSON.stringify(selectedProducts)}`
+        );
+        setAllProducts([]);
+        setTotal(0);
+        setCount(0);
+    };
     return (
         <header>
             <h1>Alternova Shop</h1>
@@ -105,6 +130,12 @@ export const HeaderPage = ({
                                 onClick={() => clearCar()}
                             >
                                 Eliminar productos
+                            </button>
+                            <button
+                                className="btn-create-all"
+                                onClick={() => handleCreateOrder()}
+                            >
+                                CREAR ORDEN
                             </button>
                         </>
                     ) : (
