@@ -1,0 +1,86 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhone 14",
+      "unit_price": 5000,
+      "stock": 5,
+      "cant": 1,
+      "type": "technology",
+      "img": "https://comprasmartphone.com/_next/image?url=https%3A%2F%2Fstorage.comprasmartphone.com%2Fsmartphones%2Fapple-iphone-14-pro.png&w=256&q=75"
+    },
+    {
+      "id": 2,
+      "name": "Tablet",
+      "unit_price": 8000,
+      "stock": 2,
+      "cant": 1,
+      "type": "technology",
+      "img": ""
+    },
+    {
+      "id": 3,
+      "name": "Control ps5",
+      "unit_price": 1000,
+      "stock": 1,
+      "cant": 1,
+      "type": "technology",
+      "img": ""
+    },
+    {
+      "id": 4,
+      "name": "Bicicleta",
+      "unit_price": 1800,
+      "stock": 1,
+      "cant": 1,
+      "type": "sport",
+      "img": ""
+    },
+    {
+      "id": 5,
+      "name": "Bicicleta Todo Terreno",
+      "unit_price": 200,
+      "stock": 0,
+      "cant": 1,
+      "type": "sport",
+      "img": ""
+    },
+    {
+      "id": 6,
+      "name": "Balon De Futbol",
+      "unit_price": 120,
+      "stock": 6,
+      "cant": 1,
+      "type": "sport",
+      "img": ""
+    },
+    {
+      "id": 7,
+      "name": "Ducha Electrica",
+      "unit_price": 120,
+      "stock": 8,
+      "cant": 1,
+      "type": "Home",
+      "img": ""
+    },
+    {
+      "id": 8,
+      "name": "Lavamanos",
+      "unit_price": 650,
+      "stock": 10,
+      "cant": 1,
+      "type": "Home",
+      "img": ""
+    },
+    {
+      "id": 9,
+      "name": "Mueble Baño",
+      "unit_price": 900,
+      "stock": 2,
+      "cant": 1,
+      "type": "Home",
+      "img": ""
+    }
+    
+  ]
+}

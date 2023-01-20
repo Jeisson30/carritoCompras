@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { ListProducts } from "./Components/ListProducts";
+import { HeaderPage } from "./Components/HeaderPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [allProducts, setAllProducts] = useState([]); //Para agregar al carrito
+    const [total, setTotal] = useState(0);
+    const [count, setCount] = useState(0); //Contador de productos
+
+    return (
+        <div className="App">
+            <HeaderPage
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                total={total}
+                setTotal={setTotal}
+                count={count}
+                setCount={setCount}
+            />
+            <ListProducts
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                total={total}
+                setTotal={setTotal}
+                count={count}
+                setCount={setCount}
+            />
+        </div>
+    );
 }
 
 export default App;
